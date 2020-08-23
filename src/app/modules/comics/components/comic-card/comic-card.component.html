@@ -1,0 +1,8 @@
+<a [routerLink]="['/comics', comic.id]">
+  <div class="card" [@cardAppeared]='comicState'>
+    <img class="card-img-top" src="{{comic.thumbnail.path}}.{{comic.thumbnail.extension}}" alt="">
+    <div class="card-body">
+      <p class="card-text text-center">{{comic?.title}}</p>
+    </div>
+  </div>
+</a>

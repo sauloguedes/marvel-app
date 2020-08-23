@@ -35,8 +35,12 @@
               "src/styles.css"
             ],
             "scripts": [{
-              "input": "./node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"
-            }, ]
+                "input": "./node_modules/admin-lte/plugins/jquery/jquery.min.js"
+              },
+              {
+                "input": "./node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js"
+              }
+            ]
           },
           "configurations": {
             "production": {

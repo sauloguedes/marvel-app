@@ -7,7 +7,9 @@ const routes: Routes = [
 
   { path: "", component: HomeComponent },
 
-  { path: "comics", component: ComicsComponent }
+  { path: "comics", component: ComicsComponent },
+
+  { path: "**", redirectTo: "" }
 
 ];
 
