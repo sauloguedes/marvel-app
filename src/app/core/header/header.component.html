@@ -3,7 +3,8 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h1 class="m-0 text-center text-marvel"> Marvel</h1>
+          <h1 class="m-0 text-center">
+            <a [routerLink]="['/']" class="text-marvel">Marvel</a></h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -21,16 +22,16 @@
       <!-- Left navbar links -->
       <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
-          <a [routerLink]="['/']" class="nav-link">Comics</a>
+          <a [routerLink]="['/comics']" class="nav-link" routerLinkActive="active">Comics</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/']" class="nav-link">Characters</a>
+          <a [routerLink]="['/characters']" class="nav-link">Characters</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/']" class="nav-link">Series</a>
+          <a [routerLink]="['/series']" class="nav-link">Series</a>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/']" class="nav-link">Events</a>
+          <a [routerLink]="['/events']" class="nav-link">Events</a>
         </li>
       </ul>
 

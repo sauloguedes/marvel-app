@@ -13,3 +13,8 @@
   background: rgb(220,53,69);
   background: linear-gradient(90deg, rgba(52,58,64,1) 0%, rgba(220,53,69,1) 50%, rgba(52,58,64,1) 100%);
 }
+
+.active {
+  color: white;
+  border-bottom: 1px solid white;
+}
