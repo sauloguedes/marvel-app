@@ -2,46 +2,9 @@
 
 </div>
 
-
 <div class="content">
-  <div class="container" *ngIf="false">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://i.annihil.us/u/prod/marvel/i/mg/4/00/5f2c34257947f/portrait_uncanny.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Comics</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://i.annihil.us/u/prod/marvel/i/mg/4/00/5f2c34257947f/portrait_uncanny.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Comics</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://i.annihil.us/u/prod/marvel/i/mg/4/00/5f2c34257947f/portrait_uncanny.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Comics</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://i.annihil.us/u/prod/marvel/i/mg/4/00/5f2c34257947f/portrait_uncanny.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Comics</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="container" *ngIf="true">
+  <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div class="jumbotron">
@@ -54,37 +17,44 @@
 
     </div>
     <div class="row">
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://via.placeholder.com/100x100" alt="">
-          <div class="card-body">
-            <p class="card-text text-center">Comics</p>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <a [routerLink]="['/']">
+          <div class="card">
+            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+            <div class="card-body">
+              <p class="card-text text-center">Comics</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://via.placeholder.com/100x100" alt="">
-          <div class="card-body">
-            <p class="card-text text-center">Characters</p>
-          </div>
-        </div>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <a [routerLink]="['/']">
+          <div class="card">
+            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+            <div class="card-body">
+              <p class="card-text text-center">Characters</p>
+            </div>
+          </div></a>
       </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://via.placeholder.com/100x100" alt="">
-          <div class="card-body">
-            <p class="card-text text-center">Series</p>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <a [routerLink]="['/']">
+          <div class="card">
+            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+            <div class="card-body">
+              <p class="card-text text-center">Series</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
-      <div class="col-sm-3">
-        <div class="card">
-          <img class="card-img-top" src="https://via.placeholder.com/100x100" alt="">
-          <div class="card-body">
-            <p class="card-text text-center">Events</p>
+      <div class="col-lg-3 col-md-6 col-sm-12">
+        <a [routerLink]="['/']">
+          <div class="card">
+            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+            <div class="card-body">
+              <p class="card-text text-center">Events</p>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
