@@ -1,0 +1,15 @@
+.text-marvel {
+  font-family: 'Bebas Neue', cursive;
+  color: white !important;
+  font-size: 4rem
+}
+
+.nav-item {
+  font-family: 'Roboto', sans-serif;
+  color: white !important;
+}
+
+.brand-container{
+  background: rgb(220,53,69);
+  background: linear-gradient(90deg, rgba(52,58,64,1) 0%, rgba(220,53,69,1) 50%, rgba(52,58,64,1) 100%);
+}

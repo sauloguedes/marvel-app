@@ -1,0 +1,40 @@
+<div class="container-fluid bg-danger brand-container">
+  <div class="content-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="m-0 text-center text-marvel"> Marvel</h1>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+</div>
+
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-dark" *ngIf="true">
+  <div class="container">
+
+    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">Comics</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">Characters</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">Series</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">Events</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
