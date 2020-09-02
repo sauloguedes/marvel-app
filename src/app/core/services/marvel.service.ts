@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -13,12 +13,34 @@ export class MarvelService {
     private httpClient: HttpClient
   ) { }
 
-  public getComics(): Observable<any> {
+  public getComics(searchParams: any[] = []): Observable<any> {
+
+    const params: HttpParams = this.getParams(searchParams)
+
     return this.httpClient.get<any>(`${environment.marvelApiUrl}/comics`, {
-      params: new HttpParams().set('apikey', environment.marvelApiKey)
+      params: params
     }).pipe(
       map((data: any) => data.data.results)
     )
+
+  }
+
+  public getComicById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}`, {
+      params: new HttpParams().set('apikey', environment.marvelApiKey)
+    }).pipe(
+      map((data: any) => data.data.results[0])
+    )
+  }
+
+  public getComicDetails(id) {
+
+    let charactersUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}/characters?apikey=${environment.marvelApiKey}`)
+    let eventsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}/events?apikey=${environment.marvelApiKey}`)
+    let storiesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}/stories?apikey=${environment.marvelApiKey}`)
+
+    return forkJoin([charactersUrl, eventsUrl, storiesUrl]);
+
   }
 
   public getCharacters(): Observable<any> {
@@ -37,6 +59,20 @@ export class MarvelService {
     return this.httpClient.get(`${environment.marvelApiUrl}/events`, {
       params: new HttpParams().set('apikey', environment.marvelApiKey)
     })
+  }
+
+  private getParams(searchParams = []): HttpParams {
+
+    let params: HttpParams = new HttpParams()
+
+    for (const p of searchParams) {
+      params = params.append(p.property, p.value);
+    }
+
+    // Adding apikey
+    params = params.append('apikey', environment.marvelApiKey)
+
+    return params
   }
 
 }

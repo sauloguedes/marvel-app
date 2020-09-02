@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MarvelService } from 'src/app/core/services/marvel.service';
 
 @Component({
@@ -11,9 +12,17 @@ export class ComicsComponent implements OnInit {
 
   comics: any[] = []
 
+  searchForm: FormGroup
+
   constructor(
     private marvelService: MarvelService
-  ) { }
+  ) {
+
+    this.searchForm = new FormGroup({
+      title: new FormControl()
+    })
+
+  }
 
   ngOnInit(): void {
 
@@ -23,9 +32,23 @@ export class ComicsComponent implements OnInit {
     }, erro => {
       console.log(erro)
     })
+
   }
 
-  search(): void {
+  public search(): void {
+
+    let params = []
+
+    if (this.searchForm.get('title').value != '') {
+      params.push({ property: 'titleStartsWith', value: this.searchForm.get('title').value })
+    }
+
+    this.marvelService.getComics(params).subscribe(data => {
+      this.comics = data
+      console.log(data)
+    }, erro => {
+      console.log(erro)
+    })
 
   }
 

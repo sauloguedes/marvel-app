@@ -1,0 +1,149 @@
+<div class="content-header">
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-sm-12">
+        <h1>
+          <a [routerLink]="['/comics']"><i class="fas fa-arrow-circle-left"></i></a>
+          {{ comic?.title }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <!-- <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3> -->
+        <div class="col-12">
+          <img src="{{comic?.thumbnail.path}}.{{comic?.thumbnail.extension}}" class="product-image" alt="">
+        </div>
+        <!-- <div class="col-12 product-image-thumbs">
+          <div class="product-image-thumb active"><img src="{{comic?.thumbnail.path}}.{{comic?.thumbnail.extension}}" alt=""></div>
+          <div class="product-image-thumb" *ngFor="let img of comic?.images">
+            <img src="{{img?.path}}.{{img?.extension}}" alt="">
+          </div>
+        </div> -->
+      </div>
+      <div class="col-12 col-sm-8">
+
+        <!-- <div class="row">
+          <div class="col-sm-12">
+            <h3 class="my-3">{{ comic?.title }}</h3>
+            <p class="text-justify">{{ comic?.description }}</p>
+          </div>
+        </div> -->
+
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <nav>
+    					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+    						<a class="nav-item nav-link active" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">Info</a>
+    						<a class="nav-item nav-link" id="nav-characters-tab" data-toggle="tab" href="#nav-characters" role="tab" aria-controls="nav-characters" aria-selected="false">Characters</a>
+    						<a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a>
+    						<a class="nav-item nav-link" id="nav-stories-tab" data-toggle="tab" href="#nav-stories" role="tab" aria-controls="nav-stories" aria-selected="false">Stories</a>
+    					</div>
+    				</nav>
+    				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+    					<div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+
+                <div class="card card-widget widget-user-2" *ngIf="comic?.description">
+                  <div class="widget-user-header">
+                    <h3 class="widget-user-username widget-storie">{{ comic?.description }}</h3>
+                  </div>
+                </div>
+
+                <div class="card card-widget widget-user-2">
+
+                  <div class="card-body">
+                    <ul class="nav flex-column">
+                      <li class="nav-item" *ngFor="let creator of comic?.creators.items">
+                        <a class="nav-link">
+                          {{ creator.name }} <span class="float-right">{{ creator.role | titlecase }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+    					</div>
+
+    					<div class="tab-pane fade" id="nav-characters" role="tabpanel" aria-labelledby="nav-characters-tab">
+
+                <ng-template [ngIf]="characters?.length > 0" [ngIfElse]="noCharacters">
+                  <div class="card card-widget widget-user-2" *ngFor="let c of characters">
+                    <div class="widget-user-header ">
+                      <div class="widget-user-image">
+                        <img class="img-circle elevation-2" src="{{c?.thumbnail.path}}.{{c?.thumbnail.extension}}" alt={{c.name}}>
+                      </div>
+                      <!-- /.widget-user-image -->
+                      <h3 class="widget-user-username align-middle align-self-center">{{c.name}}</h3>
+                      <!-- <h5 class="widget-user-desc">Lead Developer</h5> -->
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template #noCharacters>
+                  <div class="card card-widget widget-user-2">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-storie">No characters found</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+    					</div>
+
+    					<div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
+                <ng-template [ngIf]="events?.length > 0" [ngIfElse]="noEvents">
+                  <div class="card card-widget widget-user-2" *ngFor="let e of events">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-storie ">{{ e.title | titlecase }}</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template #noEvents>
+                  <div class="card card-widget widget-user-2">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-storie ">No events found</h3>
+                    </div>
+                  </div>
+                </ng-template>
+    					</div>
+
+    					<div class="tab-pane fade" id="nav-stories" role="tabpanel" aria-labelledby="nav-stories-tab">
+
+                <ng-template [ngIf]="stories?.length > 0" [ngIfElse]="noStories">
+                  <div class="card card-widget widget-user-2" *ngFor="let s of stories">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-storie ">{{ s.title | titlecase }}</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template #noStories>
+                  <div class="card card-widget widget-user-2">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-storie ">No stories found</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+    					</div>
+
+    				</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

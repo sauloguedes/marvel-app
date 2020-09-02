@@ -3,14 +3,16 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <div class="input-group">
-          <input type="text" class="form-control">
-          <span class="input-group-append">
-            <button type="button" class="btn btn-danger">
-              <i class="fa fa-search"></i>
-            </button>
-          </span>
-        </div>
+        <form [formGroup]="searchForm">
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="title">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-danger" (click)="search()">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
       </div>
     </div>
 
