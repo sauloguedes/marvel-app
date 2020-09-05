@@ -33,20 +33,41 @@ export class MarvelService {
     )
   }
 
-  public getComicDetails(id) {
+  public getComicDetails(id: string) {
 
     let charactersUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}/characters?apikey=${environment.marvelApiKey}`)
     let eventsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}/events?apikey=${environment.marvelApiKey}`)
     let storiesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/comics/${id}/stories?apikey=${environment.marvelApiKey}`)
 
     return forkJoin([charactersUrl, eventsUrl, storiesUrl]);
-
   }
 
-  public getCharacters(): Observable<any> {
+  public getCharacters(searchParams: any[] = []): Observable<any> {
+
+    const params: HttpParams = this.getParams(searchParams)
+
     return this.httpClient.get(`${environment.marvelApiUrl}/characters`, {
+      params: params
+    }).pipe(
+      map((data: any) => data.data.results)
+    )
+  }
+
+  public getCharacterById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}`, {
       params: new HttpParams().set('apikey', environment.marvelApiKey)
-    })
+    }).pipe(
+      map((data: any) => data.data.results[0])
+    )
+  }
+
+  public getCharactersDetails(id: string) {
+
+    let charactersUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/comics?apikey=${environment.marvelApiKey}`)
+    let eventsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/events?apikey=${environment.marvelApiKey}`)
+    let storiesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/stories?apikey=${environment.marvelApiKey}`)
+
+    return forkJoin([charactersUrl, eventsUrl, storiesUrl]);
   }
 
   public getSeries(): Observable<any> {

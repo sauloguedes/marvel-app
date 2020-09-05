@@ -10,6 +10,8 @@ import { ComicsComponent } from './modules/comics/pages/comics/comics.component'
 import { HttpClientModule } from '@angular/common/http';
 import { ComicCardComponent } from './modules/comics/components/comic-card/comic-card.component';
 import { ComicDetailComponent } from './modules/comics/pages/comic-detail/comic-detail.component';
+import { CharactersComponent } from './modules/characters/pages/characters/characters.component';
+import { CharacterCardComponent } from './modules/characters/components/character-card/character-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ComicDetailComponent } from './modules/comics/pages/comic-detail/comic-
     HomeComponent,
     ComicsComponent,
     ComicCardComponent,
-    ComicDetailComponent
+    ComicDetailComponent,
+    CharactersComponent,
+    CharacterCardComponent
   ],
   imports: [
     BrowserModule,

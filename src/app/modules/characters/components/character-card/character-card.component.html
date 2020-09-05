@@ -1,0 +1,8 @@
+<a [routerLink]="['/characters', character.id]">
+  <div class="card" [@cardAppeared]='characterState'>
+    <img class="card-img-top" src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="">
+    <div class="card-body">
+      <p class="card-text text-center">{{character?.name}}</p>
+    </div>
+  </div>
+</a>
