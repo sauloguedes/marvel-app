@@ -11,11 +11,6 @@ import { Character } from 'src/app/shared/models/character.model';
 export class CharactersComponent implements OnInit {
 
   characters: Character[] = []
-  urls: any[]
-  comics: any[]
-  series: any[]
-  stories: any[]
-  events: any[]
 
   searchForm: FormGroup
 

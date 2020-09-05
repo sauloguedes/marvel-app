@@ -63,11 +63,12 @@ export class MarvelService {
 
   public getCharactersDetails(id: string) {
 
-    let charactersUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/comics?apikey=${environment.marvelApiKey}`)
+    let comicsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/comics?apikey=${environment.marvelApiKey}`)
     let eventsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/events?apikey=${environment.marvelApiKey}`)
     let storiesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/stories?apikey=${environment.marvelApiKey}`)
+    let seriesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/characters/${id}/series?apikey=${environment.marvelApiKey}`)
 
-    return forkJoin([charactersUrl, eventsUrl, storiesUrl]);
+    return forkJoin([comicsUrl, eventsUrl, storiesUrl, seriesUrl]);
   }
 
   public getSeries(): Observable<any> {
