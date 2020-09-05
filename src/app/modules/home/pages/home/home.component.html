@@ -19,8 +19,8 @@
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-12">
         <a [routerLink]="['/comics']">
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+          <div class="card" [@cardAppeared]='cardState'>
+            <img class="card-img-top" src="http://i.annihil.us/u/prod/marvel/i/mg/f/20/4bc63a47b8dcb.jpg" alt="">
             <div class="card-body">
               <p class="card-text text-center">Comics</p>
             </div>
@@ -29,8 +29,8 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
         <a [routerLink]="['/characters']">
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+          <div class="card" [@cardAppeared]='cardState'>
+            <img class="card-img-top" src="http://i.annihil.us/u/prod/marvel/i/mg/9/c0/527bb7b37ff55.jpg" alt="">
             <div class="card-body">
               <p class="card-text text-center">Characters</p>
             </div>
@@ -38,8 +38,8 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
         <a [routerLink]="['/series']">
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+          <div class="card" [@cardAppeared]='cardState'>
+            <img class="card-img-top" src="http://i.annihil.us/u/prod/marvel/i/mg/c/10/51ca0fc4c83c8.jpg" alt="">
             <div class="card-body">
               <p class="card-text text-center">Series</p>
             </div>
@@ -48,8 +48,8 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-12">
         <a [routerLink]="['/events']">
-          <div class="card">
-            <img class="card-img-top" src="https://via.placeholder.com/300x300" alt="">
+          <div class="card" [@cardAppeared]='cardState'>
+            <img class="card-img-top" src="http://i.annihil.us/u/prod/marvel/i/mg/3/20/5109a1f93b543.jpg" alt="">
             <div class="card-body">
               <p class="card-text text-center">Events</p>
             </div>
