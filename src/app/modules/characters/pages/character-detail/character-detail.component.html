@@ -45,7 +45,7 @@
 
                 <div class="card card-widget widget-user-2" *ngIf="character?.description">
                   <div class="widget-user-header">
-                    <h3 class="widget-user-username widget-storie">{{ character?.description }}</h3>
+                    <h3 class="widget-user-username widget-only-text">{{ character?.description }}</h3>
                   </div>
                 </div>
 
@@ -68,7 +68,7 @@
 
                 <ng-template [ngIf]="comics?.length > 0" [ngIfElse]="noComics">
                   <div class="card card-widget widget-user-2" *ngFor="let c of comics">
-                    <div class="widget-user-header ">
+                    <div class="widget-user-header">
                       <div class="widget-user-image">
                         <img class="elevation-2" src="{{c?.thumbnail.path}}.{{c?.thumbnail.extension}}" alt={{c.name}}>
                       </div>
@@ -80,7 +80,7 @@
                 <ng-template #noComics>
                   <div class="card card-widget widget-user-2">
                     <div class="widget-user-header">
-                      <h3 class="widget-user-username widget-storie">No comics found</h3>
+                      <h3 class="widget-user-username widget-only-text">No comics found</h3>
                     </div>
                   </div>
                 </ng-template>
@@ -92,7 +92,10 @@
                 <ng-template [ngIf]="events?.length > 0" [ngIfElse]="noEvents">
                   <div class="card card-widget widget-user-2" *ngFor="let e of events">
                     <div class="widget-user-header">
-                      <h3 class="widget-user-username widget-storie ">{{ e.title | titlecase }}</h3>
+                      <div class="widget-user-image">
+                        <img class="elevation-2" src="{{e?.thumbnail.path}}.{{e?.thumbnail.extension}}" alt={{e.title}}>
+                      </div>
+                      <h3 class="widget-user-username widget-storie">{{ e.title | titlecase }}</h3>
                     </div>
                   </div>
                 </ng-template>
@@ -100,7 +103,7 @@
                 <ng-template #noEvents>
                   <div class="card card-widget widget-user-2">
                     <div class="widget-user-header">
-                      <h3 class="widget-user-username widget-storie ">No events found</h3>
+                      <h3 class="widget-user-username widget-only-text">No events found</h3>
                     </div>
                   </div>
                 </ng-template>
@@ -112,7 +115,7 @@
                 <ng-template [ngIf]="stories?.length > 0" [ngIfElse]="noStories">
                   <div class="card card-widget widget-user-2" *ngFor="let s of stories">
                     <div class="widget-user-header">
-                      <h3 class="widget-user-username widget-storie ">{{ s.title | titlecase }}</h3>
+                      <h3 class="widget-user-username widget-only-text">{{ s.title | titlecase }}</h3>
                     </div>
                   </div>
                 </ng-template>
@@ -120,7 +123,7 @@
                 <ng-template #noStories>
                   <div class="card card-widget widget-user-2">
                     <div class="widget-user-header">
-                      <h3 class="widget-user-username widget-storie ">No stories found</h3>
+                      <h3 class="widget-user-username widget-only-text">No stories found</h3>
                     </div>
                   </div>
                 </ng-template>
