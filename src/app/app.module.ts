@@ -13,6 +13,8 @@ import { ComicDetailComponent } from './modules/comics/pages/comic-detail/comic-
 import { CharactersComponent } from './modules/characters/pages/characters/characters.component';
 import { CharacterCardComponent } from './modules/characters/components/character-card/character-card.component';
 import { CharacterDetailComponent } from './modules/characters/pages/character-detail/character-detail.component';
+import { SeriesComponent } from './modules/series/pages/series/series.component';
+import { SeriesCardComponent } from './modules/series/components/series-card/series-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CharacterDetailComponent } from './modules/characters/pages/character-d
     ComicDetailComponent,
     CharactersComponent,
     CharacterCardComponent,
-    CharacterDetailComponent
+    CharacterDetailComponent,
+    SeriesComponent,
+    SeriesCardComponent
   ],
   imports: [
     BrowserModule,

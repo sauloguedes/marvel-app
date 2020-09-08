@@ -1,0 +1,8 @@
+<a [routerLink]="['/series', serie.id]">
+  <div class="card" [@cardAppeared]='cardState'>
+    <img class="card-img-top" src="{{serie.thumbnail.path}}.{{serie.thumbnail.extension}}" alt="">
+    <div class="card-body">
+      <p class="card-text text-center">{{serie?.title}}</p>
+    </div>
+  </div>
+</a>

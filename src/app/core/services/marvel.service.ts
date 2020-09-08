@@ -71,16 +71,59 @@ export class MarvelService {
     return forkJoin([comicsUrl, eventsUrl, storiesUrl, seriesUrl]);
   }
 
-  public getSeries(): Observable<any> {
+  public getSeries(searchParams: any[] = []): Observable<any> {
+
+    const params: HttpParams = this.getParams(searchParams)
+
     return this.httpClient.get(`${environment.marvelApiUrl}/series`, {
-      params: new HttpParams().set('apikey', environment.marvelApiKey)
-    })
+      params: params
+    }).pipe(
+      map((data: any) => data.data.results)
+    )
+
   }
 
-  public getEvents(): Observable<any> {
-    return this.httpClient.get(`${environment.marvelApiUrl}/events`, {
+  public getSerieById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}`, {
       params: new HttpParams().set('apikey', environment.marvelApiKey)
-    })
+    }).pipe(
+      map((data: any) => data.data.results[0])
+    )
+  }
+
+  public getSeriesDetails(id: string) {
+
+    let charactersUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/characters?apikey=${environment.marvelApiKey}`)
+    let comicsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/comics?apikey=${environment.marvelApiKey}`)
+    let creatorsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/creators?apikey=${environment.marvelApiKey}`)
+    let eventsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/events?apikey=${environment.marvelApiKey}`)
+    let storiesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/stories?apikey=${environment.marvelApiKey}`)
+
+    return forkJoin([charactersUrl, comicsUrl, creatorsUrl, eventsUrl, storiesUrl]);
+  }
+
+  public getEvents(searchParams: any[] = []): Observable<any> {
+
+    const params: HttpParams = this.getParams(searchParams)
+
+    return this.httpClient.get(`${environment.marvelApiUrl}/events`, {
+      params: params
+    }).pipe(
+      map((data: any) => data.data.results)
+    )
+
+  }
+
+  public getEventById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}`, {
+      params: new HttpParams().set('apikey', environment.marvelApiKey)
+    }).pipe(
+      map((data: any) => data.data.results[0])
+    )
+  }
+
+  public getEventsDetails() {
+
   }
 
   private getParams(searchParams = []): HttpParams {
