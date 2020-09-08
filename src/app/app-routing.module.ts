@@ -6,6 +6,7 @@ import { ComicDetailComponent } from './modules/comics/pages/comic-detail/comic-
 import { CharactersComponent } from './modules/characters/pages/characters/characters.component';
 import { CharacterDetailComponent } from './modules/characters/pages/character-detail/character-detail.component';
 import { SeriesComponent } from './modules/series/pages/series/series.component';
+import { SerieDetailComponent } from './modules/series/pages/serie-detail/serie-detail.component';
 
 const routes: Routes = [
 
@@ -21,7 +22,7 @@ const routes: Routes = [
 
   { path: "series", component: SeriesComponent },
 
-  { path: "series/:id", component: ComicDetailComponent },
+  { path: "series/:id", component: SerieDetailComponent },
 
   { path: "**", redirectTo: "" }
 

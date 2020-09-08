@@ -15,6 +15,7 @@ import { CharacterCardComponent } from './modules/characters/components/characte
 import { CharacterDetailComponent } from './modules/characters/pages/character-detail/character-detail.component';
 import { SeriesComponent } from './modules/series/pages/series/series.component';
 import { SeriesCardComponent } from './modules/series/components/series-card/series-card.component';
+import { SerieDetailComponent } from './modules/series/pages/serie-detail/serie-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SeriesCardComponent } from './modules/series/components/series-card/ser
     CharacterCardComponent,
     CharacterDetailComponent,
     SeriesComponent,
-    SeriesCardComponent
+    SeriesCardComponent,
+    SerieDetailComponent
   ],
   imports: [
     BrowserModule,
