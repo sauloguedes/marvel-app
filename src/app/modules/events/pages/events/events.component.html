@@ -1,0 +1,38 @@
+<div class="content-header">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-12">
+        <form [formGroup]="searchForm">
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="title">
+            <span class="input-group-append">
+              <button type="button" class="btn btn-danger" (click)="search()">
+                <i class="fa fa-search"></i>
+              </button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let event of events | async">
+
+          <marvel-event-card [event]=event></marvel-event-card>
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>

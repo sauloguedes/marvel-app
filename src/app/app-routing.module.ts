@@ -7,6 +7,8 @@ import { CharactersComponent } from './modules/characters/pages/characters/chara
 import { CharacterDetailComponent } from './modules/characters/pages/character-detail/character-detail.component';
 import { SeriesComponent } from './modules/series/pages/series/series.component';
 import { SerieDetailComponent } from './modules/series/pages/serie-detail/serie-detail.component';
+import { EventsComponent } from './modules/events/pages/events/events.component';
+import { EventDetailComponent } from './modules/events/pages/event-detail/event-detail.component';
 
 const routes: Routes = [
 
@@ -23,6 +25,10 @@ const routes: Routes = [
   { path: "series", component: SeriesComponent },
 
   { path: "series/:id", component: SerieDetailComponent },
+
+  { path: "events", component: EventsComponent },
+
+  { path: "events/:id", component: EventDetailComponent },
 
   { path: "**", redirectTo: "" }
 

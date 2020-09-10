@@ -1,0 +1,8 @@
+<a [routerLink]="['/events', event.id]">
+  <div class="card" [@cardAppeared]='eventState'>
+    <img class="card-img-top" src="{{event.thumbnail.path}}.{{event.thumbnail.extension}}" alt="">
+    <div class="card-body">
+      <p class="card-text text-center">{{event?.title}}</p>
+    </div>
+  </div>
+</a>

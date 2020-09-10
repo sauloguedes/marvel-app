@@ -16,6 +16,9 @@ import { CharacterDetailComponent } from './modules/characters/pages/character-d
 import { SeriesComponent } from './modules/series/pages/series/series.component';
 import { SeriesCardComponent } from './modules/series/components/series-card/series-card.component';
 import { SerieDetailComponent } from './modules/series/pages/serie-detail/serie-detail.component';
+import { EventsComponent } from './modules/events/pages/events/events.component';
+import { EventDetailComponent } from './modules/events/pages/event-detail/event-detail.component';
+import { EventCardComponent } from './modules/events/components/event-card/event-card.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { SerieDetailComponent } from './modules/series/pages/serie-detail/serie-
     CharacterDetailComponent,
     SeriesComponent,
     SeriesCardComponent,
-    SerieDetailComponent
+    SerieDetailComponent,
+    EventsComponent,
+    EventDetailComponent,
+    EventCardComponent
   ],
   imports: [
     BrowserModule,
