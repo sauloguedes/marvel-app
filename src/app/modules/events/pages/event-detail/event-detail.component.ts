@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MarvelService } from 'src/app/core/services/marvel.service';
-import { Events } from 'src/app/shared/models/events.model';
-import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+import { Events } from 'src/app/shared/models/events.model';
 
 @Component({
   selector: 'marvel-event-detail',
@@ -12,6 +13,7 @@ import { Subject } from 'rxjs';
 })
 export class EventDetailComponent implements OnInit, OnDestroy {
 
+  loading: boolean
   event: Events
 
   comics: any[] = []
@@ -26,6 +28,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     private router: ActivatedRoute,
     private marvelService: MarvelService
   ) {
+    this.loading = false
     //
     this.subscriptions = new Subject<void>()
   }

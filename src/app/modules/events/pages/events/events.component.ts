@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MarvelService } from 'src/app/core/services/marvel.service';
-import { Observable } from 'rxjs';
 import { Events } from 'src/app/shared/models/events.model';
+
+import { Observable, from } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, catchError, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'marvel-events',
@@ -10,6 +12,8 @@ import { Events } from 'src/app/shared/models/events.model';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+
+  loading: boolean
 
   events: Observable<Events[]>
 
@@ -27,19 +31,33 @@ export class EventsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.search()
+    this.search('')
+
+    this.searchForm.get('title').valueChanges.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+    ).subscribe(data => {
+      //
+      this.search(data)
+    })
 
   }
 
-  public search(): void {
+  public search(searchTerm = ''): void {
+
+    this.loading = true
 
     let params = []
 
-    if (this.searchForm.get('title').value != '') {
-      params.push({ property: 'titleStartsWith', value: this.searchForm.get('title').value })
+    if (searchTerm != '') {
+      params.push({ property: 'titleStartsWith', value: searchTerm })
     }
 
-    this.events = this.marvelService.getSeries(params);
+    this.events = this.marvelService.getSeries(params)
+      .pipe(
+        catchError(error => from([])),
+        tap(() => this.loading = false)
+      );
 
   }
 

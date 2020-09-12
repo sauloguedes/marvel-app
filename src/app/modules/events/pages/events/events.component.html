@@ -7,7 +7,7 @@
           <div class="input-group">
             <input type="text" class="form-control" formControlName="title">
             <span class="input-group-append">
-              <button type="button" class="btn btn-danger" (click)="search()">
+              <button type="button" class="btn btn-danger">
                 <i class="fa fa-search"></i>
               </button>
             </span>
@@ -24,6 +24,14 @@
   <div class="container">
 
     <div class="row">
+
+        <div class="col-sm-12" *ngIf="loading">
+            <p class="lead text-center">Loading ..</p>
+        </div>
+
+        <div class="col-sm-12" *ngIf="(events | async)?.length === 0">
+            <p class="lead text-center">No results found</p>
+        </div>
 
         <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let event of events | async">
 
