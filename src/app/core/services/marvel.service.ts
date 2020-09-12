@@ -121,8 +121,13 @@ export class MarvelService {
     )
   }
 
-  public getEventsDetails() {
+  public getEventsDetails(id: string) {
 
+    let charactersUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/characters?apikey=${environment.marvelApiKey}`)
+    let comicsUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/comics?apikey=${environment.marvelApiKey}`)
+    let storiesUrl = this.httpClient.get<any>(`${environment.marvelApiUrl}/series/${id}/stories?apikey=${environment.marvelApiKey}`)
+
+    return forkJoin([charactersUrl, comicsUrl, storiesUrl]);
   }
 
   private getParams(searchParams = []): HttpParams {

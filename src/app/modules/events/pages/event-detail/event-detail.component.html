@@ -1,1 +1,144 @@
-<p>event-detail works!</p>
+<div class="content-header">
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-sm-12">
+        <h1>
+          <a [routerLink]="['/events']"><i class="fas fa-arrow-circle-left"></i></a>
+          {{ event?.title }}
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12 col-sm-4">
+        <!-- <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3> -->
+        <div class="col-12">
+          <img src="{{event?.thumbnail.path}}.{{event?.thumbnail.extension}}" class="product-image" alt="">
+        </div>
+        <div class="col-12 mt-2">
+          <a target="_blank" href="{{event?.urls[0].url}}" class="btn btn-danger btn-block">Visit Marvel</a>
+        </div>
+      </div>
+      <div class="col-12 col-sm-8">
+
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <nav>
+    					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+    						<a class="nav-item nav-link active" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-controls="nav-info" aria-selected="true">Info</a>
+    						<a class="nav-item nav-link" id="nav-comics-tab" data-toggle="tab" href="#nav-comics" role="tab" aria-controls="nav-comics" aria-selected="false">Comics</a>
+    						<a class="nav-item nav-link" id="nav-characters-tab" data-toggle="tab" href="#nav-characters" role="tab" aria-controls="nav-characters" aria-selected="false">Characters</a>
+    						<a class="nav-item nav-link" id="nav-stories-tab" data-toggle="tab" href="#nav-stories" role="tab" aria-controls="nav-stories" aria-selected="false">Stories</a>
+    					</div>
+    				</nav>
+    				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+    					<div class="tab-pane fade show active" id="nav-info" role="tabpanel" aria-labelledby="nav-info-tab">
+
+                <div class="card card-widget widget-user-2" *ngIf="event?.description">
+                  <div class="widget-user-header">
+                    <h3 class="widget-user-username widget-only-text">{{ event?.description }}</h3>
+                  </div>
+                </div>
+
+                <div class="card card-widget widget-user-2">
+
+                  <div class="card-body">
+                    <ul class="nav flex-column">
+                      <li class="nav-item" *ngFor="let c of event?.creators.items">
+                        <a class="nav-link">
+                          {{ c.name | titlecase }} <span class="float-right"> {{ c.role | titlecase }} </span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+    					</div>
+
+    					<div class="tab-pane fade" id="nav-comics" role="tabpanel" aria-labelledby="nav-comics-tab">
+
+                <ng-template [ngIf]="comics?.length > 0" [ngIfElse]="noComics">
+                  <div class="card card-widget widget-user-2" *ngFor="let c of comics">
+                    <div class="widget-user-header">
+                      <div class="widget-user-image">
+                        <img class="elevation-2" src="{{c?.thumbnail.path}}.{{c?.thumbnail.extension}}" alt={{c.name}}>
+                      </div>
+                      <h3 class="widget-user-username">{{c.title}}</h3>
+                      <h5 class="widget-user-desc pt-2">Format: {{c.format}} | Pages: {{ c.pageCount }}</h5>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template #noComics>
+                  <div class="card card-widget widget-user-2">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-only-text">No comics found</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+    					</div>
+
+    					<div class="tab-pane fade" id="nav-characters" role="tabpanel" aria-labelledby="nav-characters-tab">
+
+                <ng-template [ngIf]="characters?.length > 0" [ngIfElse]="noCharacters">
+                  <div class="card card-widget widget-user-2" *ngFor="let c of characters">
+                    <div class="widget-user-header">
+                      <div class="widget-user-image">
+                        <img class="elevation-2" src="{{c?.thumbnail.path}}.{{c?.thumbnail.extension}}" alt={{c.name}}>
+                      </div>
+                      <h3 class="widget-user-username widget-storie">{{ c.name | titlecase }}</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template #noCharacters>
+                  <div class="card card-widget widget-user-2">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-only-text">No characters found</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+    					</div>
+
+    					<div class="tab-pane fade" id="nav-stories" role="tabpanel" aria-labelledby="nav-stories-tab">
+
+                <ng-template [ngIf]="stories?.length > 0" [ngIfElse]="noStories">
+                  <div class="card card-widget widget-user-2" *ngFor="let s of stories">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-only-text">{{ s.title | titlecase }}</h3>
+                      <h5 class="widget-user-desc widget-only-text pt-2">Original comic: {{ s.originalIssue.name }}</h5>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <ng-template #noStories>
+                  <div class="card card-widget widget-user-2">
+                    <div class="widget-user-header">
+                      <h3 class="widget-user-username widget-only-text">No stories found</h3>
+                    </div>
+                  </div>
+                </ng-template>
+
+    					</div>
+
+    				</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
