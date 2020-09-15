@@ -1,23 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MarvelService } from 'src/app/core/services/marvel.service';
 import { Character } from 'src/app/shared/models/character.model';
+import { Subject, from } from 'rxjs';
+import { takeUntil, distinctUntilChanged, debounceTime, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'marvel-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.css']
 })
-export class CharactersComponent implements OnInit {
+export class CharactersComponent implements OnInit, OnDestroy {
+
+  loading: boolean
 
   characters: Character[] = []
 
   searchForm: FormGroup
 
+  // Subscriptions
+  private subscriptions: Subject<any>
+
   constructor(
     private marvelService: MarvelService
   ) {
 
+    //
+    this.subscriptions = new Subject<void>()
+    //
     this.searchForm = new FormGroup({
       name: new FormControl()
     })
@@ -25,31 +35,60 @@ export class CharactersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //
+    this.search('')
+    //
+    this.searchForm.get('name').valueChanges.pipe(
+      //
+      debounceTime(1000),
+      //
+      distinctUntilChanged()
 
-    this.marvelService.getCharacters().subscribe(data => {
-      this.characters = data
-      console.log(data)
-    }, erro => {
-      console.log(erro)
+    ).subscribe(data => {
+      //
+      this.search(data)
     })
 
   }
 
-  public search(): void {
-
+  public search(searchTerm = ''): void {
+    //
+    this.loading = true
+    //
+    this.characters = null
+    // Params array
     let params = []
 
-    if (this.searchForm.get('name').value != '') {
-      params.push({ property: 'nameStartsWith', value: this.searchForm.get('name').value })
+    if (searchTerm != '') {
+      params.push({ property: 'nameStartsWith', value: searchTerm })
     }
 
-    this.marvelService.getCharacters(params).subscribe(data => {
-      this.characters = data
-      console.log(data)
-    }, erro => {
-      console.log(erro)
-    })
+    this.marvelService.getCharacters(params)
+      //
+      .pipe(
+        //
+        takeUntil(this.subscriptions),
+        //
+        catchError(error => from([]))
+      )
+      .subscribe(data => {
+        //
+        this.loading = false
+        //
+        this.characters = data
+      }, erro => {
+        //
+        this.loading = false
 
+      })
+
+  }
+
+  //
+  ngOnDestroy(): void {
+    // Unsubscribe from all subscriptions
+    this.subscriptions.next();
+    this.subscriptions.complete();
   }
 
 }
